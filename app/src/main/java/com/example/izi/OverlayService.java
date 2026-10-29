@@ -28,7 +28,7 @@ public class OverlayService extends Service {
         super.onCreate();
         createNotificationChannel();
 
-        // Обязательное уведомление для работы Foreground Service (Android 8+)
+        // Уведомление для работы Foreground Service (Android 8+)
         Notification notification = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             notification = new Notification.Builder(this, CHANNEL_ID)
@@ -43,16 +43,13 @@ public class OverlayService extends Service {
                     .setSmallIcon(android.R.drawable.ic_menu_compass)
                     .build();
         }
-        
-        // Запускаем сервис в фоновом режиме с уведомлением
         startForeground(1, notification);
 
         windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         
         webView = new WebView(this);
-        webView.setBackgroundColor(0x00000000); // Прозрачный фон
+        webView.setBackgroundColor(0x00000000); 
         
-        // Настройки WebView для загрузки локальных файлов и картинок
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -61,21 +58,84 @@ public class OverlayService extends Service {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setBlockNetworkImage(false);
-        
-        // Загружаем нашего персонажа
-        webView.loadUrl("file:///android_asset/index.html");
+
+        // Загружаем HTML-код напрямую (обходим ограничения на чтение файлов)
+        String htmlCode = "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>" +
+            "body { background: transparent; margin: 0; overflow: hidden; width: 100vw; height: 100vh; }" +
+            "#pet-container { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 160px; height: 200px; }" +
+            "svg { width: 100%; height: 100%; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15)); }" +
+            "#cloud { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 300px; background: rgba(255,255,255,0.95); border: 2px solid #D36B9A; border-radius: 20px; padding: 12px; display: none; flex-direction: column; z-index: 20; }" +
+            "#cloud.active { display: flex; }" +
+            "#cloud-text { font-size: 14px; color: #333; text-align: center; margin-bottom: 8px; font-weight: bold; }" +
+            ".input-row { display: flex; gap: 6px; }" +
+            "#chat-input { flex: 1; padding: 8px; border-radius: 10px; border: 1px solid #ccc; }" +
+            ".send-btn { background: #D36B9A; color: white; border: none; border-radius: 10px; padding: 8px 12px; font-weight: bold; }" +
+            ".controls { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); display: flex; gap: 15px; z-index: 30; }" +
+            ".ctrl-btn { width: 50px; height: 50px; border-radius: 50%; background: white; border: 2px solid #D36B9A; font-size: 24px; display: flex; justify-content: center; align-items: center; }" +
+            "</style></head><body>" +
+            "<div id='cloud'><div id='cloud-text'>Привет! Я iZi.</div><div class='input-row'><input type='text' id='chat-input' placeholder='Написать...'><button class='send-btn' onclick='sendMessage()'>➤</button></div></div>" +
+            "<div id='pet-container'><div id='pet-svg-wrapper'></div></div>" +
+            "<div class='controls'><button class='ctrl-btn' onclick='toggleCloud()'>💬</button><button class='ctrl-btn' onclick='startMic()'>🎤</button></div>" +
+            "<script>" +
+            "const WORKER_URL = 'https://wispy-pond-9c0b.zadeakber.workers.dev';" +
+            "let manifest = { parts: [" +
+            "{id:'01_head', file:'01_head.svg', size:[180,160], pivot:[90,80]}," +
+            "{id:'03_eye_left', file:'03_eye_left.svg', size:[60,68], pivot:[30,34]}," +
+            "{id:'04_eye_right', file:'04_eye_right.svg', size:[60,68], pivot:[30,34]}," +
+            "{id:'05_pupil_left', file:'05_pupil_left.svg', size:[30,30], pivot:[15,15]}," +
+            "{id:'06_pupil_right', file:'06_pupil_right.svg', size:[30,30], pivot:[15,15]}," +
+            "{id:'09_headphones', file:'09_headphones.svg', size:[224,120], pivot:[112,70]}," +
+            "{id:'10_brow_left', file:'10_brow_left.svg', size:[56,22], pivot:[28,11]}," +
+            "{id:'11_brow_right', file:'11_brow_right.svg', size:[56,22], pivot:[28,11]}," +
+            "{id:'13_mouth_smile', file:'13_mouth_smile.svg', size:[64,44], pivot:[32,22]}," +
+            "{id:'17_body', file:'17_body.svg', size:[150,190], pivot:[75,95]}," +
+            "{id:'18_vest', file:'18_vest.svg', size:[150,190], pivot:[75,95]}," +
+            "{id:'19_backpack', file:'19_backpack.svg', size:[190,150], pivot:[95,75]}," +
+            "{id:'20_shoulder_left', file:'20_shoulder_left.svg', size:[34,62], pivot:[17,14]}," +
+            "{id:'21_forearm_left', file:'21_forearm_left.svg', size:[32,62], pivot:[16,14]}," +
+            "{id:'22_hand_left', file:'22_hand_left.svg', size:[44,48], pivot:[22,12]}," +
+            "{id:'23_shoulder_right', file:'23_shoulder_right.svg', size:[34,62], pivot:[17,14]}," +
+            "{id:'24_forearm_right', file:'24_forearm_right.svg', size:[32,62], pivot:[16,14]}," +
+            "{id:'25_hand_right', file:'25_hand_right.svg', size:[44,48], pivot:[22,12]}," +
+            "{id:'26_thigh_left', file:'26_thigh_left.svg', size:[36,56], pivot:[18,14]}," +
+            "{id:'27_shin_left', file:'27_shin_left.svg', size:[34,56], pivot:[17,14]}," +
+            "{id:'28_foot_left', file:'28_foot_left.svg', size:[60,36], pivot:[30,8]}," +
+            "{id:'29_thigh_right', file:'29_thigh_right.svg', size:[36,56], pivot:[18,14]}," +
+            "{id:'30_shin_right', file:'30_shin_right.svg', size:[34,56], pivot:[17,14]}," +
+            "{id:'31_foot_right', file:'31_foot_right.svg', size:[60,36], pivot:[30,8]}" +
+            "]};" +
+            "function createImg(id) { const p = manifest.parts.find(x => x.id === id); if(!p) return ''; return `<image href='${p.file}' x='${-p.pivot[0]}' y='${-p.pivot[1]}' width='${p.size[0]}' height='${p.size[1]}' />`; }" +
+            "function buildPet() {" +
+            "  document.getElementById('pet-svg-wrapper').innerHTML = `<svg viewBox='0 0 400 520'>" +
+            "    <g transform='translate(200, 345)'>${createImg('19_backpack')}</g>" +
+            "    <g transform='translate(176, 408)'>${createImg('26_thigh_left')}<g transform='translate(0, 36)'>${createImg('27_shin_left')}</g><g transform='translate(0, 72)'>${createImg('28_foot_left')}</g></g>" +
+            "    <g transform='translate(224, 408)'>${createImg('29_thigh_right')}<g transform='translate(0, 36)'>${createImg('30_shin_right')}</g><g transform='translate(0, 72)'>${createImg('31_foot_right')}</g></g>" +
+            "    <g transform='translate(200, 330)'>${createImg('17_body')}</g><g transform='translate(200, 330)'>${createImg('18_vest')}</g>" +
+            "    <g transform='translate(142, 296)'>${createImg('20_shoulder_left')}<g transform='translate(0, 36)'>${createImg('21_forearm_left')}</g><g transform='translate(0, 70)'>${createImg('22_hand_left')}</g></g>" +
+            "    <g transform='translate(258, 296)'>${createImg('23_shoulder_right')}<g transform='translate(0, 36)'>${createImg('24_forearm_right')}</g><g transform='translate(0, 70)'>${createImg('25_hand_right')}</g></g>" +
+            "    <g transform='translate(200, 170)'>${createImg('01_head')}</g><g transform='translate(200, 160)'>${createImg('09_headphones')}</g>" +
+            "    <g transform='translate(162, 168)'>${createImg('03_eye_left')}${createImg('05_pupil_left')}</g><g transform='translate(238, 168)'>${createImg('04_eye_right')}${createImg('06_pupil_right')}</g>" +
+            "    <g transform='translate(162, 128)'>${createImg('10_brow_left')}</g><g transform='translate(238, 128)'>${createImg('11_brow_right')}</g>" +
+            "    <g transform='translate(200, 208)'>${createImg('13_mouth_smile')}</g>" +
+            "  </svg>`;" +
+            "}" +
+            "function toggleCloud() { document.getElementById('cloud').classList.toggle('active'); }" +
+            "async function sendMessage() { const text = document.getElementById('chat-input').value; if(!text) return; document.getElementById('cloud-text').innerText = 'Думаю...'; document.getElementById('chat-input').value = ''; try { const res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }) }); const data = await res.json(); document.getElementById('cloud-text').innerText = data.reply; } catch(e) { document.getElementById('cloud-text').innerText = 'Ошибка связи!'; } }" +
+            "function startMic() { document.getElementById('cloud-text').innerText = 'Слушаю...'; document.getElementById('cloud').classList.add('active'); }" +
+            "window.onload = buildPet;" +
+            "</script></body></html>";
+
+        webView.loadDataWithBaseURL("file:///android_asset/", htmlCode, "text/html", "UTF-8", null);
 
         int layoutFlag = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
                 : WindowManager.LayoutParams.TYPE_PHONE;
 
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                WindowManager.LayoutParams.WRAP_CONTENT, 
-                WindowManager.LayoutParams.WRAP_CONTENT,
+                400, 500,
                 layoutFlag,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE 
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.BOTTOM | Gravity.START;
@@ -94,14 +154,10 @@ public class OverlayService extends Service {
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_ID,
-                    "iZi Service Channel",
-                    NotificationManager.IMPORTANCE_LOW
+                    CHANNEL_ID, "iZi Service Channel", NotificationManager.IMPORTANCE_LOW
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
-            if (manager != null) {
-                manager.createNotificationChannel(serviceChannel);
-            }
+            if (manager != null) manager.createNotificationChannel(serviceChannel);
         }
     }
 }
