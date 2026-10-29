@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
-    
-    <!-- ДОБАВЛЕНО: Разрешение на доступ к интернету для общения с Cloudflare Worker -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -26,10 +24,9 @@
             </intent-filter>
         </activity>
 
-        <!-- Сервис, который рисует питомца поверх окон -->
+        <!-- Сервис для оверлея (без microphone, чтобы не было ошибки на Android 14+) -->
         <service
             android:name=".OverlayService"
-            android:foregroundServiceType="microphone"
             android:exported="false" />
 
     </application>
