@@ -17,6 +17,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         
+    # Этот шаг создаст недостающий файл gradle-wrapper.jar
+    - name: Generate Gradle Wrapper
+      run: gradle wrapper --gradle-version 8.9
+      
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
