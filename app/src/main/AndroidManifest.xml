@@ -1,20 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!-- Разрешения -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
-        android:label="iZi"
+        android:allowBackup="false"
+        android:label="iZi Pet"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        <!-- Экран приложения -->
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -24,10 +18,8 @@
             </intent-filter>
         </activity>
 
-        <!-- Сервис для оверлея (без microphone, чтобы не было ошибки на Android 14+) -->
         <service
             android:name=".OverlayService"
             android:exported="false" />
-
     </application>
 </manifest>

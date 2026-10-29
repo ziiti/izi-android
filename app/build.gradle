@@ -3,33 +3,21 @@ plugins {
 }
 
 android {
-    namespace 'com.example.izi'
-    compileSdk 34
+    namespace 'com.izi.pet'
+    compileSdk 35
 
     defaultConfig {
-        applicationId "com.example.izi"
-        minSdk 24
-        targetSdk 34
+        applicationId 'com.izi.pet'
+        minSdk 29
+        // targetSdk 32 keeps the Android 10+ overlay/foreground-service
+        // behavior compatible with this sideloaded prototype.
+        targetSdk 32
         versionCode 1
-        versionName "1.0"
-        
-        resConfigs "ru", "en"
+        versionName '1.0'
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            // Убрали proguardFiles, чтобы не требовать наличия файла proguard-rules.pro
-        }
-    }
-    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-}
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.webkit:webkit:1.8.0'
 }
