@@ -27,28 +27,30 @@ public class OverlayService extends Service {
         webView = new WebView(this);
         webView.setBackgroundColor(0x00000000); // Прозрачный фон
         
-        // Настройки WebView
+        // Включаем все нужные настройки для загрузки локальных файлов
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setAllowFileAccess(true);
+        settings.setAllowContentAccess(true);
+        settings.setAllowFileAccessFromFileURLs(true);
+        settings.setAllowUniversalAccessFromFileURLs(true);
         
-        // Загружаем нашего персонажа из папки assets
-        webView.loadUrl("file:///android_asset/pet.html");
+        // Загружаем наш index.html
+        webView.loadUrl("file:///android_asset/index.html");
 
         int layoutFlag = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O
                 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
                 : WindowManager.LayoutParams.TYPE_PHONE;
 
-        // Размер окна (фиксированный, чтобы не мешать кнопкам)
-        // 400x500 — это как раз размер нашего HTML (body 400px на 500px)
+        // Размер окна (400x500)
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 400, 
                 500,
                 layoutFlag,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE 
                 | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, // Позволяет выходить за края
+                | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 PixelFormat.TRANSLUCENT);
 
         params.gravity = Gravity.BOTTOM | Gravity.START;
