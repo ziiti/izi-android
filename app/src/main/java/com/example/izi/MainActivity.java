@@ -39,8 +39,13 @@ public class MainActivity extends Activity {
                         Uri.parse("package:" + getPackageName()));
                 startActivity(intent);
             } else {
-                // Если разрешение есть - запускаем сервис
-                startService(new Intent(MainActivity.this, OverlayService.class));
+                // ИСПРАВЛЕНО: используем startForegroundService для Android 8.0+
+                Intent serviceIntent = new Intent(MainActivity.this, OverlayService.class);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    startForegroundService(serviceIntent);
+                } else {
+                    startService(serviceIntent);
+                }
                 finish(); // Закрываем приложение, чтобы остался только питомец
             }
         });
