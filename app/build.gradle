@@ -13,14 +13,13 @@ android {
         versionCode 1
         versionName "1.0"
         
-        // Оставляем только русский и английский, чтобы не тянуть лишнее
         resConfigs "ru", "en"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // Убрали proguardFiles, чтобы не требовать наличия файла proguard-rules.pro
         }
     }
     
