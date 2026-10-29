@@ -10,14 +10,22 @@ import android.os.Build;
 import android.os.IBinder;
 import android.view.Gravity;
 import android.view.WindowManager;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebSettings;
 import android.webkit.WebChromeClient;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class OverlayService extends Service {
     private WindowManager windowManager;
     private WebView webView;
     private static final String CHANNEL_ID = "izi_channel";
+    private static final String WORKER_URL = "https://wispy-pond-9c0b.zadeakber.workers.dev";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -58,14 +66,15 @@ public class OverlayService extends Service {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         settings.setBlockNetworkImage(false);
-        settings.setJavaScriptCanOpenWindowsAutomatically(true);
-        settings.setSupportMultipleWindows(true);
         
         webView.setWebChromeClient(new WebChromeClient());
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
 
-        // Вшиваем обновленный HTML с движением и кнопками Тамагочи
+        // ДОБАВЛЯЕМ МОСТ: Теперь HTML может просить Java сделать запрос
+        webView.addJavascriptInterface(new AndroidBridge(), "AndroidBridge");
+
+        // Вшиваем исправленный HTML (без fetch, с мостом)
         String htmlCode = "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>" +
             "body { background: transparent; margin: 0; overflow: hidden; width: 100vw; height: 100vh; }" +
             "#pet-container { position: absolute; bottom: 10px; left: 50px; width: 160px; height: 200px; transition: left 0.1s linear; }" +
@@ -93,7 +102,6 @@ public class OverlayService extends Service {
             "<div id='pet-container'><div id='pet-svg-wrapper'></div></div>" +
             "<div class='controls'><button class='ctrl-btn' onclick='toggleCloud()'>💬</button><button class='ctrl-btn' onclick='startMic()'>🎤</button></div>" +
             "<script>" +
-            "const WORKER_URL = 'https://wispy-pond-9c0b.zadeakber.workers.dev';" +
             "let manifest = { parts: [" +
             "{id:'01_head', file:'01_head.svg', size:[180,160], pivot:[90,80]}," +
             "{id:'03_eye_left', file:'03_eye_left.svg', size:[60,68], pivot:[30,34]}," +
@@ -176,15 +184,16 @@ public class OverlayService extends Service {
 
             "function toggleCloud() { document.getElementById('cloud').classList.toggle('active'); }" +
             
-            "async function sendMessage() { " +
+            // ВЫЗОВ JAVA-МОСТА ВМЕСТО FETCH
+            "function sendMessage() { " +
             "  const text = document.getElementById('chat-input').value; if(!text) return; " +
             "  document.getElementById('cloud-text').innerText = 'Думаю...'; " +
             "  document.getElementById('chat-input').value = ''; " +
-            "  try { " +
-            "    const res = await fetch(WORKER_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: text }) }); " +
-            "    const data = await res.json(); " +
-            "    document.getElementById('cloud-text').innerText = data.reply; " +
-            "  } catch(e) { document.getElementById('cloud-text').innerText = 'Ошибка связи!'; } " +
+            "  if (window.AndroidBridge) { " +
+            "    window.AndroidBridge.sendMessage(text); " +
+            "  } else { " +
+            "    document.getElementById('cloud-text').innerText = 'Ошибка: мост не найден'; " +
+            "  }" +
             "}" +
             
             "function startMic() { document.getElementById('cloud-text').innerText = 'Слушаю...'; document.getElementById('cloud').classList.add('active'); }" +
@@ -198,7 +207,6 @@ public class OverlayService extends Service {
                 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
                 : WindowManager.LayoutParams.TYPE_PHONE;
 
-        // Окно на весь экран (MATCH_PARENT)
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.MATCH_PARENT, 
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -207,7 +215,7 @@ public class OverlayService extends Service {
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 PixelFormat.TRANSLUCENT);
 
-        params.gravity = Gravity.BOTTOM | Gravity.START;
+        params.gravity = Gravity.TOP | Gravity.START;
         params.x = 0;
         params.y = 0;
 
@@ -227,6 +235,58 @@ public class OverlayService extends Service {
             );
             NotificationManager manager = getSystemService(NotificationManager.class);
             if (manager != null) manager.createNotificationChannel(serviceChannel);
+        }
+    }
+
+    // --- МОСТ МЕЖДУ JAVA И JAVASCRIPT ---
+    public class AndroidBridge {
+        @JavascriptInterface
+        public void sendMessage(final String message) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String reply = "Ошибка связи.";
+                    try {
+                        URL url = new URL(WORKER_URL);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setRequestMethod("POST");
+                        conn.setRequestProperty("Content-Type", "application/json");
+                        conn.setDoOutput(true);
+                        
+                        String jsonInputString = "{\"message\": \"" + message + "\"}";
+                        try(OutputStream os = conn.getOutputStream()) {
+                            byte[] input = jsonInputString.getBytes("utf-8");
+                            os.write(input, 0, input.length);
+                        }
+
+                        try(BufferedReader br = new BufferedReader(
+                                new InputStreamReader(conn.getInputStream(), "utf-8"))) {
+                            StringBuilder response = new StringBuilder();
+                            String responseLine = null;
+                            while ((responseLine = br.readLine()) != null) {
+                                response.append(responseLine.trim());
+                            }
+                            // Парсим простой JSON {"reply":"..."}
+                            String respStr = response.toString();
+                            int start = respStr.indexOf("\"reply\":\"") + 9;
+                            int end = respStr.lastIndexOf("\"");
+                            if (start > 8 && end > start) {
+                                reply = respStr.substring(start, end);
+                            }
+                        }
+                    } catch (Exception e) {
+                        reply = "Ошибка сети: " + e.getMessage();
+                    }
+
+                    final String finalReply = reply;
+                    webView.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            webView.evaluateJavascript("document.getElementById('cloud-text').innerText = '" + finalReply.replace("'", "\\'") + "';", null);
+                        }
+                    });
+                }
+            }).start();
         }
     }
 }
