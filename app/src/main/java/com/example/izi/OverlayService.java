@@ -27,7 +27,7 @@ public class OverlayService extends Service {
         webView = new WebView(this);
         webView.setBackgroundColor(0x00000000); // Прозрачный фон
         
-        // Включаем все нужные настройки для загрузки локальных файлов
+        // Включаем все нужные настройки для загрузки локальных файлов и картинок
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
@@ -36,6 +36,9 @@ public class OverlayService extends Service {
         settings.setAllowFileAccessFromFileURLs(true);
         settings.setAllowUniversalAccessFromFileURLs(true);
         
+        // Разрешаем загрузку картинок (для наших SVG)
+        settings.setBlockNetworkImage(false);
+        
         // Загружаем наш index.html
         webView.loadUrl("file:///android_asset/index.html");
 
@@ -43,10 +46,10 @@ public class OverlayService extends Service {
                 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
                 : WindowManager.LayoutParams.TYPE_PHONE;
 
-        // Размер окна (400x500)
+        // Размер окна (WRAP_CONTENT, чтобы подстроилось под экран)
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                400, 
-                500,
+                WindowManager.LayoutParams.WRAP_CONTENT, 
+                WindowManager.LayoutParams.WRAP_CONTENT,
                 layoutFlag,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE 
                 | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
