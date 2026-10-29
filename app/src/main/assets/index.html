@@ -6,8 +6,8 @@
     <title>iZi</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; font-family: sans-serif; }
-        /* Фиксированные размеры, чтобы окно не дергалось при клавиатуре */
-        body { background: transparent; overflow: hidden; width: 400px; height: 500px; }
+        /* Размеры подстраиваются под окно */
+        body { background: transparent; overflow: hidden; width: 100vw; height: 100vh; position: relative; }
         
         /* Персонаж */
         #pet-container {
@@ -23,7 +23,7 @@
         #cloud {
             position: absolute; top: 10px; left: 50%;
             transform: translateX(-50%) scale(0.9);
-            width: 280px; min-height: 80px;
+            width: 90%; max-width: 300px; min-height: 80px;
             background: rgba(255, 255, 255, 0.95);
             border: 2px solid #D36B9A; border-radius: 20px;
             padding: 12px; display: flex; flex-direction: column;
@@ -71,42 +71,57 @@
     // --- ССЫЛКА НА ТВОЙ CLOUDFLARE WORKER ---
     const WORKER_URL = 'https://wispy-pond-9c0b.zadeakber.workers.dev';
 
-    let manifest = null;
-    let isTalking = false;
+    // --- ВСТРОЕННЫЙ МАНИФЕСТ (чтобы Android не блокировал загрузку) ---
+    const manifest = {
+      "canvas": [400, 520],
+      "parts": [
+        { "id": "01_head", "file": "01_head.svg", "size": [180, 160], "pivot": [90, 80] },
+        { "id": "02_hair", "file": "02_hair.svg", "size": [70, 56], "pivot": [35, 50] },
+        { "id": "03_eye_left", "file": "03_eye_left.svg", "size": [60, 68], "pivot": [30, 34] },
+        { "id": "04_eye_right", "file": "04_eye_right.svg", "size": [60, 68], "pivot": [30, 34] },
+        { "id": "05_pupil_left", "file": "05_pupil_left.svg", "size": [30, 30], "pivot": [15, 15] },
+        { "id": "06_pupil_right", "file": "06_pupil_right.svg", "size": [30, 30], "pivot": [15, 15] },
+        { "id": "09_headphones", "file": "09_headphones.svg", "size": [224, 120], "pivot": [112, 70] },
+        { "id": "10_brow_left", "file": "10_brow_left.svg", "size": [56, 22], "pivot": [28, 11] },
+        { "id": "11_brow_right", "file": "11_brow_right.svg", "size": [56, 22], "pivot": [28, 11] },
+        { "id": "13_mouth_smile", "file": "13_mouth_smile.svg", "size": [64, 44], "pivot": [32, 22] },
+        { "id": "17_body", "file": "17_body.svg", "size": [150, 190], "pivot": [75, 95] },
+        { "id": "18_vest", "file": "18_vest.svg", "size": [150, 190], "pivot": [75, 95] },
+        { "id": "19_backpack", "file": "19_backpack.svg", "size": [190, 150], "pivot": [95, 75] },
+        { "id": "20_shoulder_left", "file": "20_shoulder_left.svg", "size": [34, 62], "pivot": [17, 14] },
+        { "id": "21_forearm_left", "file": "21_forearm_left.svg", "size": [32, 62], "pivot": [16, 14] },
+        { "id": "22_hand_left", "file": "22_hand_left.svg", "size": [44, 48], "pivot": [22, 12] },
+        { "id": "23_shoulder_right", "file": "23_shoulder_right.svg", "size": [34, 62], "pivot": [17, 14] },
+        { "id": "24_forearm_right", "file": "24_forearm_right.svg", "size": [32, 62], "pivot": [16, 14] },
+        { "id": "25_hand_right", "file": "25_hand_right.svg", "size": [44, 48], "pivot": [22, 12] },
+        { "id": "26_thigh_left", "file": "26_thigh_left.svg", "size": [36, 56], "pivot": [18, 14] },
+        { "id": "27_shin_left", "file": "27_shin_left.svg", "size": [34, 56], "pivot": [17, 14] },
+        { "id": "28_foot_left", "file": "28_foot_left.svg", "size": [60, 36], "pivot": [30, 8] },
+        { "id": "29_thigh_right", "file": "29_thigh_right.svg", "size": [36, 56], "pivot": [18, 14] },
+        { "id": "30_shin_right", "file": "30_shin_right.svg", "size": [34, 56], "pivot": [17, 14] },
+        { "id": "31_foot_right", "file": "31_foot_right.svg", "size": [60, 36], "pivot": [30, 8] }
+      ]
+    };
+
     let animTime = 0;
+    let isTalking = false;
 
-    // Загружаем манифест
-    async function initPet() {
-        try {
-            const res = await fetch('./manifest.json');
-            manifest = await res.json();
-            buildPet();
-            animateLegs();
-        } catch(e) { console.error("Ошибка манифеста", e); }
-    }
-
-    // Функция создания картинки
     function createImg(id) {
         const p = manifest.parts.find(x => x.id === id);
         if(!p) return '';
-        // Путь к файлу без папки parts, так как мы положили их в assets
-        return `<image href="./${p.file.replace('parts/', '')}" x="${-p.pivot[0]}" y="${-p.pivot[1]}" width="${p.size[0]}" height="${p.size[1]}" />`;
+        return `<image href="${p.file}" x="${-p.pivot[0]}" y="${-p.pivot[1]}" width="${p.size[0]}" height="${p.size[1]}" />`;
     }
 
-    // Сборка персонажа (Глаза сделаны отдельно!)
     function buildPet() {
         const wrapper = document.getElementById('pet-svg-wrapper');
         
-        // Собираем левый глаз (белок + зрачок) и правый глаз
         let eyeLeft = `<g transform="translate(162, 168)">${createImg("03_eye_left")}${createImg("05_pupil_left")}</g>`;
         let eyeRight = `<g transform="translate(238, 168)">${createImg("04_eye_right")}${createImg("06_pupil_right")}</g>`;
 
         wrapper.innerHTML = `
         <svg viewBox="0 0 400 520">
-            <!-- Рюкзак -->
             <g transform="translate(200, 345)">${createImg("19_backpack")}</g>
             
-            <!-- Ноги (добавлены ID для анимации) -->
             <g id="leg-left" transform="translate(176, 408)">
                 ${createImg("26_thigh_left")}
                 <g transform="translate(0, 36)">${createImg("27_shin_left")}</g>
@@ -118,46 +133,36 @@
                 <g transform="translate(0, 72)">${createImg("31_foot_right")}</g>
             </g>
 
-            <!-- Тело -->
             <g transform="translate(200, 330)">${createImg("17_body")}</g>
             <g transform="translate(200, 330)">${createImg("18_vest")}</g>
 
-            <!-- Руки -->
             <g transform="translate(142, 296)">${createImg("20_shoulder_left")}<g transform="translate(0, 36)">${createImg("21_forearm_left")}</g><g transform="translate(0, 70)">${createImg("22_hand_left")}</g></g>
             <g transform="translate(258, 296)">${createImg("23_shoulder_right")}<g transform="translate(0, 36)">${createImg("24_forearm_right")}</g><g transform="translate(0, 70)">${createImg("25_hand_right")}</g></g>
 
-            <!-- Голова -->
             <g transform="translate(200, 170)">${createImg("01_head")}</g>
             <g transform="translate(200, 160)">${createImg("09_headphones")}</g>
             <g transform="translate(200, 96)">${createImg("02_hair")}</g>
             
-            <!-- Брови -->
             <g transform="translate(162, 128)">${createImg("10_brow_left")}</g>
             <g transform="translate(238, 128)">${createImg("11_brow_right")}</g>
 
-            <!-- Глаза (вставлены как единое целое) -->
             ${eyeLeft}
             ${eyeRight}
 
-            <!-- Рот -->
             <g transform="translate(200, 208)">${createImg("13_mouth_smile")}</g>
         </svg>`;
     }
 
-    // Легкая анимация ходьбы (лапки)
+    // Анимация лапок (через CSS-классы)
     function animateLegs() {
-        const legL = document.getElementById('leg-left');
-        const legR = document.getElementById('leg-right');
-        
-        setInterval(() => {
-            animTime += 0.2;
-            const swing = Math.sin(animTime) * 10; // Амплитуда покачивания
-            
-            if(legL && legR) {
-                legL.style.transform = `translate(176px, 408px) rotate(${swing}deg)`;
-                legR.style.transform = `translate(224px, 408px) rotate(${-swing}deg)`;
-            }
-        }, 100);
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes swingLeft { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } }
+            @keyframes swingRight { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-10deg); } }
+            #leg-left { animation: swingLeft 1s infinite ease-in-out; transform-origin: 176px 408px; }
+            #leg-right { animation: swingRight 1s infinite ease-in-out; transform-origin: 224px 408px; }
+        `;
+        document.head.appendChild(style);
     }
 
     function toggleCloud() {
@@ -165,7 +170,6 @@
         cloud.classList.toggle('active');
     }
 
-    // Отправка сообщения
     async function sendMessage() {
         const input = document.getElementById('chat-input');
         const text = input.value.trim();
@@ -189,7 +193,6 @@
         }
     }
 
-    // Заглушка для микрофона
     function startMic() {
         if (isTalking) return;
         isTalking = true;
@@ -202,14 +205,16 @@
         }, 2000);
     }
 
-    // Озвучка (Android TTS)
     function speakText(text) {
         if (window.AndroidTTS) {
             window.AndroidTTS.speak(text);
         }
     }
 
-    window.onload = initPet;
+    window.onload = () => {
+        buildPet();
+        animateLegs();
+    };
 </script>
 </body>
 </html>
