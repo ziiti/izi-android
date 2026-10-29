@@ -65,7 +65,7 @@ public class OverlayService extends Service {
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
 
-        // Вшиваем обновленный HTML с движением и кнопками
+        // Вшиваем обновленный HTML с движением и кнопками Тамагочи
         String htmlCode = "<!DOCTYPE html><html><head><meta charset='UTF-8'><style>" +
             "body { background: transparent; margin: 0; overflow: hidden; width: 100vw; height: 100vh; }" +
             "#pet-container { position: absolute; bottom: 10px; left: 50px; width: 160px; height: 200px; transition: left 0.1s linear; }" +
@@ -198,8 +198,10 @@ public class OverlayService extends Service {
                 ? WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
                 : WindowManager.LayoutParams.TYPE_PHONE;
 
+        // Окно на весь экран (MATCH_PARENT)
         WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                800, 600, // Увеличили окно, чтобы персонаж мог гулять
+                WindowManager.LayoutParams.MATCH_PARENT, 
+                WindowManager.LayoutParams.MATCH_PARENT,
                 layoutFlag,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                 | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
