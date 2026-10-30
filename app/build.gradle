@@ -14,10 +14,16 @@ android {
         versionName '1.0'
     }
 
+    // Явно указываем путь к assets
     sourceSets {
         main {
             assets.srcDirs = ['src/main/assets']
         }
+    }
+
+    // Отключаем сжатие, чтобы файлы точно попали в APK
+    androidResources {
+        noCompress += ['svg', 'html', 'json']
     }
 
     compileOptions {
