@@ -6,24 +6,22 @@ android {
     namespace 'com.izi.pet'
     compileSdk 35
 
-    // Принудительно указываем, где искать картинки
-    sourceSets {
-        main {
-            assets.srcDirs = ['src/main/assets']
-        }
-    }
-
-    // Запрещаем сжимать SVG, чтобы они точно попали в APK
-    aaptOptions {
-        noCompress "svg"
-    }
-
     defaultConfig {
         applicationId 'com.izi.pet'
         minSdk 29
         targetSdk 32
         versionCode 1
         versionName '1.0'
+    }
+
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    androidResources {
+        noCompress += ['svg']
     }
 
     compileOptions {
