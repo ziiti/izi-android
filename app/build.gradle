@@ -16,7 +16,6 @@ android {
 
     sourceSets {
         main {
-            // Указываем точный путь к папке assets внутри модуля app
             assets.srcDirs = ['src/main/assets']
         }
     }

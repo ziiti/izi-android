@@ -1,29 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.izi.pet">
+plugins {
+    id 'com.android.application'
+}
 
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+android {
+    namespace 'com.izi.pet'
+    compileSdk 35
 
-    <application
-        android:allowBackup="false"
-        android:label="iZi Pet"
-        android:supportsRtl="true"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
-        
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+    defaultConfig {
+        applicationId 'com.izi.pet'
+        minSdk 29
+        targetSdk 32
+        versionCode 1
+        versionName '1.0'
+    }
 
-        <service
-            android:name=".OverlayService"
-            android:exported="false" />
-    </application>
-</manifest>
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
