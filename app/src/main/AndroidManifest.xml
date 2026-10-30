@@ -1,14 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Разрешения -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
 
     <application
-        android:allowBackup="false"
-        android:label="iZi Pet"
+        android:allowBackup="true"
+        android:label="iZi"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        <!-- Экран приложения -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -18,8 +23,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Сервис, который рисует питомца поверх окон -->
         <service
             android:name=".OverlayService"
+            android:foregroundServiceType="microphone"
             android:exported="false" />
+
     </application>
 </manifest>

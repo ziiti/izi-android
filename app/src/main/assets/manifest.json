@@ -22,611 +22,276 @@
     {
       "id": "01_head",
       "name": "Голова целиком",
-      "file": "01_head.svg",
-      "size": [
-        180,
-        160
-      ],
-      "pivot": [
-        90,
-        80
-      ],
-      "place": [
-        200,
-        170
-      ]
+      "file": "parts/01_head.svg",
+      "size": [180, 160],
+      "pivot": [90, 80],
+      "place": [200, 170]
     },
     {
       "id": "02_hair",
       "name": "Волосы (3 волоска)",
-      "file": "02_hair.svg",
-      "size": [
-        70,
-        56
-      ],
-      "pivot": [
-        35,
-        50
-      ],
-      "place": [
-        200,
-        96
-      ]
+      "file": "parts/02_hair.svg",
+      "size": [70, 56],
+      "pivot": [35, 50],
+      "place": [200, 96]
     },
     {
       "id": "03_eye_left",
       "name": "Левый глаз (белок)",
-      "file": "03_eye_left.svg",
-      "size": [
-        60,
-        68
-      ],
-      "pivot": [
-        30,
-        34
-      ],
-      "place": [
-        162,
-        168
-      ]
+      "file": "parts/03_eye_left.svg",
+      "size": [60, 68],
+      "pivot": [30, 34],
+      "place": [162, 168]
     },
     {
       "id": "04_eye_right",
       "name": "Правый глаз (белок)",
-      "file": "04_eye_right.svg",
-      "size": [
-        60,
-        68
-      ],
-      "pivot": [
-        30,
-        34
-      ],
-      "place": [
-        238,
-        168
-      ]
+      "file": "parts/04_eye_right.svg",
+      "size": [60, 68],
+      "pivot": [30, 34],
+      "place": [238, 168]
     },
     {
       "id": "05_pupil_left",
       "name": "Левый зрачок",
-      "file": "05_pupil_left.svg",
-      "size": [
-        30,
-        30
-      ],
-      "pivot": [
-        15,
-        15
-      ],
-      "place": [
-        165,
-        172
-      ]
+      "file": "parts/05_pupil_left.svg",
+      "size": [30, 30],
+      "pivot": [15, 15],
+      "place": [165, 172]
     },
     {
       "id": "06_pupil_right",
       "name": "Правый зрачок",
-      "file": "06_pupil_right.svg",
-      "size": [
-        30,
-        30
-      ],
-      "pivot": [
-        15,
-        15
-      ],
-      "place": [
-        235,
-        172
-      ]
+      "file": "parts/06_pupil_right.svg",
+      "size": [30, 30],
+      "pivot": [15, 15],
+      "place": [235, 172]
     },
     {
       "id": "07_lid_left",
       "name": "Левое веко",
-      "file": "07_lid_left.svg",
-      "size": [
-        60,
-        68
-      ],
-      "pivot": [
-        30,
-        34
-      ],
-      "place": [
-        162,
-        168
-      ]
+      "file": "parts/07_lid_left.svg",
+      "size": [60, 68],
+      "pivot": [30, 34],
+      "place": [162, 168]
     },
     {
       "id": "08_lid_right",
       "name": "Правое веко",
-      "file": "08_lid_right.svg",
-      "size": [
-        60,
-        68
-      ],
-      "pivot": [
-        30,
-        34
-      ],
-      "place": [
-        238,
-        168
-      ]
+      "file": "parts/08_lid_right.svg",
+      "size": [60, 68],
+      "pivot": [30, 34],
+      "place": [238, 168]
     },
     {
       "id": "09_headphones",
       "name": "Наушники (вместо очков)",
-      "file": "09_headphones.svg",
-      "size": [
-        224,
-        120
-      ],
-      "pivot": [
-        112,
-        70
-      ],
-      "place": [
-        200,
-        160
-      ]
+      "file": "parts/09_headphones.svg",
+      "size": [224, 120],
+      "pivot": [112, 70],
+      "place": [200, 160]
     },
     {
       "id": "10_brow_left",
       "name": "Левая бровь",
-      "file": "10_brow_left.svg",
-      "size": [
-        56,
-        22
-      ],
-      "pivot": [
-        28,
-        11
-      ],
-      "place": [
-        162,
-        128
-      ]
+      "file": "parts/10_brow_left.svg",
+      "size": [56, 22],
+      "pivot": [28, 11],
+      "place": [162, 128]
     },
     {
       "id": "11_brow_right",
       "name": "Правая бровь",
-      "file": "11_brow_right.svg",
-      "size": [
-        56,
-        22
-      ],
-      "pivot": [
-        28,
-        11
-      ],
-      "place": [
-        238,
-        128
-      ]
+      "file": "parts/11_brow_right.svg",
+      "size": [56, 22],
+      "pivot": [28, 11],
+      "place": [238, 128]
     },
     {
       "id": "12_mouth_neutral",
       "name": "Рот: нейтральный",
-      "file": "12_mouth_neutral.svg",
-      "size": [
-        64,
-        44
-      ],
-      "pivot": [
-        32,
-        22
-      ],
-      "place": [
-        200,
-        208
-      ]
+      "file": "parts/12_mouth_neutral.svg",
+      "size": [64, 44],
+      "pivot": [32, 22],
+      "place": [200, 208]
     },
     {
       "id": "13_mouth_smile",
       "name": "Рот: улыбка",
-      "file": "13_mouth_smile.svg",
-      "size": [
-        64,
-        44
-      ],
-      "pivot": [
-        32,
-        22
-      ],
-      "place": [
-        200,
-        208
-      ]
+      "file": "parts/13_mouth_smile.svg",
+      "size": [64, 44],
+      "pivot": [32, 22],
+      "place": [200, 208]
     },
     {
       "id": "14_mouth_open",
       "name": "Рот: открытый",
-      "file": "14_mouth_open.svg",
-      "size": [
-        64,
-        44
-      ],
-      "pivot": [
-        32,
-        22
-      ],
-      "place": [
-        200,
-        208
-      ]
+      "file": "parts/14_mouth_open.svg",
+      "size": [64, 44],
+      "pivot": [32, 22],
+      "place": [200, 208]
     },
     {
       "id": "15_mouth_sad",
       "name": "Рот: грусть",
-      "file": "15_mouth_sad.svg",
-      "size": [
-        64,
-        44
-      ],
-      "pivot": [
-        32,
-        22
-      ],
-      "place": [
-        200,
-        208
-      ]
+      "file": "parts/15_mouth_sad.svg",
+      "size": [64, 44],
+      "pivot": [32, 22],
+      "place": [200, 208]
     },
     {
       "id": "16_mouth_surprise",
       "name": "Рот: удивление",
-      "file": "16_mouth_surprise.svg",
-      "size": [
-        64,
-        44
-      ],
-      "pivot": [
-        32,
-        22
-      ],
-      "place": [
-        200,
-        208
-      ]
+      "file": "parts/16_mouth_surprise.svg",
+      "size": [64, 44],
+      "pivot": [32, 22],
+      "place": [200, 208]
     },
     {
       "id": "17_body",
       "name": "Тело",
-      "file": "17_body.svg",
-      "size": [
-        150,
-        190
-      ],
-      "pivot": [
-        75,
-        95
-      ],
-      "place": [
-        200,
-        330
-      ]
+      "file": "parts/17_body.svg",
+      "size": [150, 190],
+      "pivot": [75, 95],
+      "place": [200, 330]
     },
     {
       "id": "18_vest",
       "name": "Жилет с шарфом",
-      "file": "18_vest.svg",
-      "size": [
-        150,
-        190
-      ],
-      "pivot": [
-        75,
-        95
-      ],
-      "place": [
-        200,
-        330
-      ]
+      "file": "parts/18_vest.svg",
+      "size": [150, 190],
+      "pivot": [75, 95],
+      "place": [200, 330]
     },
     {
       "id": "19_backpack",
       "name": "Коричневый рюкзак",
-      "file": "19_backpack.svg",
-      "size": [
-        190,
-        150
-      ],
-      "pivot": [
-        95,
-        75
-      ],
-      "place": [
-        200,
-        345
-      ]
+      "file": "parts/19_backpack.svg",
+      "size": [190, 150],
+      "pivot": [95, 75],
+      "place": [200, 345]
     },
     {
       "id": "20_shoulder_left",
       "name": "Левое плечо",
-      "file": "20_shoulder_left.svg",
-      "size": [
-        34,
-        62
-      ],
-      "pivot": [
-        17,
-        14
-      ],
-      "place": [
-        142,
-        296
-      ]
+      "file": "parts/20_shoulder_left.svg",
+      "size": [34, 62],
+      "pivot": [17, 14],
+      "place": [142, 296]
     },
     {
       "id": "21_forearm_left",
       "name": "Левое предплечье",
-      "file": "21_forearm_left.svg",
-      "size": [
-        32,
-        62
-      ],
-      "pivot": [
-        16,
-        14
-      ],
-      "place": [
-        142,
-        332
-      ]
+      "file": "parts/21_forearm_left.svg",
+      "size": [32, 62],
+      "pivot": [16, 14],
+      "place": [142, 332]
     },
     {
       "id": "22_hand_left",
       "name": "Левая кисть",
-      "file": "22_hand_left.svg",
-      "size": [
-        44,
-        48
-      ],
-      "pivot": [
-        22,
-        12
-      ],
-      "place": [
-        142,
-        366
-      ]
+      "file": "parts/22_hand_left.svg",
+      "size": [44, 48],
+      "pivot": [22, 12],
+      "place": [142, 366]
     },
     {
       "id": "23_shoulder_right",
       "name": "Правое плечо",
-      "file": "23_shoulder_right.svg",
-      "size": [
-        34,
-        62
-      ],
-      "pivot": [
-        17,
-        14
-      ],
-      "place": [
-        258,
-        296
-      ]
+      "file": "parts/23_shoulder_right.svg",
+      "size": [34, 62],
+      "pivot": [17, 14],
+      "place": [258, 296]
     },
     {
       "id": "24_forearm_right",
       "name": "Правое предплечье",
-      "file": "24_forearm_right.svg",
-      "size": [
-        32,
-        62
-      ],
-      "pivot": [
-        16,
-        14
-      ],
-      "place": [
-        258,
-        332
-      ]
+      "file": "parts/24_forearm_right.svg",
+      "size": [32, 62],
+      "pivot": [16, 14],
+      "place": [258, 332]
     },
     {
       "id": "25_hand_right",
       "name": "Правая кисть",
-      "file": "25_hand_right.svg",
-      "size": [
-        44,
-        48
-      ],
-      "pivot": [
-        22,
-        12
-      ],
-      "place": [
-        258,
-        366
-      ]
+      "file": "parts/25_hand_right.svg",
+      "size": [44, 48],
+      "pivot": [22, 12],
+      "place": [258, 366]
     },
     {
       "id": "26_thigh_left",
       "name": "Левое бедро",
-      "file": "26_thigh_left.svg",
-      "size": [
-        36,
-        56
-      ],
-      "pivot": [
-        18,
-        14
-      ],
-      "place": [
-        176,
-        408
-      ]
+      "file": "parts/26_thigh_left.svg",
+      "size": [36, 56],
+      "pivot": [18, 14],
+      "place": [176, 408]
     },
     {
       "id": "27_shin_left",
       "name": "Левая голень",
-      "file": "27_shin_left.svg",
-      "size": [
-        34,
-        56
-      ],
-      "pivot": [
-        17,
-        14
-      ],
-      "place": [
-        176,
-        444
-      ]
+      "file": "parts/27_shin_left.svg",
+      "size": [34, 56],
+      "pivot": [17, 14],
+      "place": [176, 444]
     },
     {
       "id": "28_foot_left",
       "name": "Левая ступня",
-      "file": "28_foot_left.svg",
-      "size": [
-        60,
-        36
-      ],
-      "pivot": [
-        30,
-        8
-      ],
-      "place": [
-        176,
-        480
-      ]
+      "file": "parts/28_foot_left.svg",
+      "size": [60, 36],
+      "pivot": [30, 8],
+      "place": [176, 480]
     },
     {
       "id": "29_thigh_right",
       "name": "Правое бедро",
-      "file": "29_thigh_right.svg",
-      "size": [
-        36,
-        56
-      ],
-      "pivot": [
-        18,
-        14
-      ],
-      "place": [
-        224,
-        408
-      ]
+      "file": "parts/29_thigh_right.svg",
+      "size": [36, 56],
+      "pivot": [18, 14],
+      "place": [224, 408]
     },
     {
       "id": "30_shin_right",
       "name": "Правая голень",
-      "file": "30_shin_right.svg",
-      "size": [
-        34,
-        56
-      ],
-      "pivot": [
-        17,
-        14
-      ],
-      "place": [
-        224,
-        444
-      ]
+      "file": "parts/30_shin_right.svg",
+      "size": [34, 56],
+      "pivot": [17, 14],
+      "place": [224, 444]
     },
     {
       "id": "31_foot_right",
       "name": "Правая ступня",
-      "file": "31_foot_right.svg",
-      "size": [
-        60,
-        36
-      ],
-      "pivot": [
-        30,
-        8
-      ],
-      "place": [
-        224,
-        480
-      ]
+      "file": "parts/31_foot_right.svg",
+      "size": [60, 36],
+      "pivot": [30, 8],
+      "place": [224, 480]
     }
   ],
   "rig": {
     "arm_left": {
-      "parts": [
-        "20_shoulder_left",
-        "21_forearm_left",
-        "22_hand_left"
-      ],
-      "default_angles": [
-        12,
-        6,
-        0
-      ],
-      "segment_lengths": [
-        36,
-        34
-      ],
-      "root_joint": [
-        142,
-        296
-      ]
+      "parts": ["20_shoulder_left", "21_forearm_left", "22_hand_left"],
+      "default_angles": [12, 6, 0],
+      "segment_lengths": [36, 34],
+      "root_joint": [142, 296]
     },
     "arm_right": {
-      "parts": [
-        "23_shoulder_right",
-        "24_forearm_right",
-        "25_hand_right"
-      ],
-      "default_angles": [
-        -12,
-        -6,
-        0
-      ],
-      "segment_lengths": [
-        36,
-        34
-      ],
-      "root_joint": [
-        258,
-        296
-      ]
+      "parts": ["23_shoulder_right", "24_forearm_right", "25_hand_right"],
+      "default_angles": [-12, -6, 0],
+      "segment_lengths": [36, 34],
+      "root_joint": [258, 296]
     },
     "leg_left": {
-      "parts": [
-        "26_thigh_left",
-        "27_shin_left",
-        "28_foot_left"
-      ],
-      "default_angles": [
-        4,
-        -4,
-        0
-      ],
-      "segment_lengths": [
-        36,
-        34
-      ],
-      "root_joint": [
-        176,
-        408
-      ]
+      "parts": ["26_thigh_left", "27_shin_left", "28_foot_left"],
+      "default_angles": [4, -4, 0],
+      "segment_lengths": [36, 34],
+      "root_joint": [176, 408]
     },
     "leg_right": {
-      "parts": [
-        "29_thigh_right",
-        "30_shin_right",
-        "31_foot_right"
-      ],
-      "default_angles": [
-        -4,
-        4,
-        0
-      ],
-      "segment_lengths": [
-        36,
-        34
-      ],
-      "root_joint": [
-        224,
-        408
-      ]
+      "parts": ["29_thigh_right", "30_shin_right", "31_foot_right"],
+      "default_angles": [-4, 4, 0],
+      "segment_lengths": [36, 34],
+      "root_joint": [224, 408]
     }
   },
   "mouths": [
