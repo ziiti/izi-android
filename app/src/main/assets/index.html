@@ -32,8 +32,8 @@ body{position:relative}
     <svg id="character" viewBox="0 0 400 520" xmlns="http://www.w3.org/2000/svg"></svg>
   </div>
 </div>
-<script>
-const manifest = {"canvas":[400,520],"note":"Левый/правый: слева/справа на экране. pivot — точка сустава внутри части (px). place — куда pivot ставится в сборке. Углы: + = по часовой.","z_order":["19_backpack","legs","17_body","18_vest","arms","01_head","eyes","pupils","brows","mouth","09_headphones","02_hair"],"parts":[{"id":"01_head","name":"Голова целиком","file":"01_head.svg","size":[180,160],"pivot":[90,80],"place":[200,170]},{"id":"02_hair","name":"Волосы (3 волоска)","file":"02_hair.svg","size":[70,56],"pivot":[35,50],"place":[200,96]},{"id":"03_eye_left","name":"Левый глаз (белок)","file":"03_eye_left.svg","size":[60,68],"pivot":[30,34],"place":[162,168]},{"id":"04_eye_right","name":"Правый глаз (белок)","file":"04_eye_right.svg","size":[60,68],"pivot":[30,34],"place":[238,168]},{"id":"05_pupil_left","name":"Левый зрачок","file":"05_pupil_left.svg","size":[30,30],"pivot":[15,15],"place":[165,172]},{"id":"06_pupil_right","name":"Правый зрачок","file":"06_pupil_right.svg","size":[30,30],"pivot":[15,15],"place":[235,172]},{"id":"07_lid_left","name":"Левое веко","file":"07_lid_left.svg","size":[60,68],"pivot":[30,34],"place":[162,168]},{"id":"08_lid_right","name":"Правое веко","file":"08_lid_right.svg","size":[60,68],"pivot":[30,34],"place":[238,168]},{"id":"09_headphones","name":"Наушники (вместо очков)","file":"09_headphones.svg","size":[224,120],"pivot":[112,70],"place":[200,160]},{"id":"10_brow_left","name":"Левая бровь","file":"10_brow_left.svg","size":[56,22],"pivot":[28,11],"place":[162,128]},{"id":"11_brow_right","name":"Правая бровь","file":"11_brow_right.svg","size":[56,22],"pivot":[28,11],"place":[238,128]},{"id":"12_mouth_neutral","name":"Рот: нейтральный","file":"12_mouth_neutral.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"13_mouth_smile","name":"Рот: улыбка","file":"13_mouth_smile.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"14_mouth_open","name":"Рот: открытый","file":"14_mouth_open.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"15_mouth_sad","name":"Рот: грусть","file":"15_mouth_sad.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"16_mouth_surprise","name":"Рот: удивление","file":"16_mouth_surprise.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"17_body","name":"Тело","file":"17_body.svg","size":[150,190],"pivot":[75,95],"place":[200,330]},{"id":"18_vest","name":"Жилет с шарфом","file":"18_vest.svg","size":[150,190],"pivot":[75,95],"place":[200,330]},{"id":"19_backpack","name":"Коричневый рюкзак","file":"19_backpack.svg","size":[190,150],"pivot":[95,75],"place":[200,345]},{"id":"20_shoulder_left","name":"Левое плечо","file":"20_shoulder_left.svg","size":[34,62],"pivot":[17,14],"place":[142,296]},{"id":"21_forearm_left","name":"Левое предплечье","file":"21_forearm_left.svg","size":[32,62],"pivot":[16,14],"place":[142,332]},{"id":"22_hand_left","name":"Левая кисть","file":"22_hand_left.svg","size":[44,48],"pivot":[22,12],"place":[142,366]},{"id":"23_shoulder_right","name":"Правое плечо","file":"23_shoulder_right.svg","size":[34,62],"pivot":[17,14],"place":[258,296]},{"id":"24_forearm_right","name":"Правое предплечье","file":"24_forearm_right.svg","size":[32,62],"pivot":[16,14],"place":[258,332]},{"id":"25_hand_right","name":"Правая кисть","file":"25_hand_right.svg","size":[44,48],"pivot":[22,12],"place":[258,366]},{"id":"26_thigh_left","name":"Левое бедро","file":"26_thigh_left.svg","size":[36,56],"pivot":[18,14],"place":[176,408]},{"id":"27_shin_left","name":"Левая голень","file":"27_shin_left.svg","size":[34,56],"pivot":[17,14],"place":[176,444]},{"id":"28_foot_left","name":"Левая ступня","file":"28_foot_left.svg","size":[60,36],"pivot":[30,8],"place":[176,480]},{"id":"29_thigh_right","name":"Правое бедро","file":"29_thigh_right.svg","size":[36,56],"pivot":[18,14],"place":[224,408]},{"id":"30_shin_right","name":"Правая голень","file":"30_shin_right.svg","size":[34,56],"pivot":[17,14],"place":[224,444]},{"id":"31_foot_right","name":"Правая ступня","file":"31_foot_right.svg","size":[60,36],"pivot":[30,8],"place":[224,480]}],"rig":{"arm_left":{"parts":["20_shoulder_left","21_forearm_left","22_hand_left"],"default_angles":[12,6,0],"segment_lengths":[36,34],"root_joint":[142,296]},"arm_right":{"parts":["23_shoulder_right","24_forearm_right","25_hand_right"],"default_angles":[-12,-6,0],"segment_lengths":[36,34],"root_joint":[258,296]},"leg_left":{"parts":["26_thigh_left","27_shin_left","28_foot_left"],"default_angles":[4,-4,0],"segment_lengths":[36,34],"root_joint":[176,408]},"leg_right":{"parts":["29_thigh_right","30_shin_right","31_foot_right"],"default_angles":[-4,4,0],"segment_lengths":[36,34],"root_joint":[224,408]}},"mouths":["12_mouth_neutral","13_mouth_smile","14_mouth_open","15_mouth_sad","16_mouth_surprise"],"palette":{"outline":"#1C2B2B","body":"#3FC1B0","belly":"#8FE3D6","vest":"#4B4FA3","scarf":"#F26B4B","headphones":"#F28C28","backpack":"#8B5A2B","gloves_boots":"#1F2A44","pupil":"#3B2314"}};
+<script>const manifest = {"canvas":[400,520],"note":"Левый/правый: слева/справа на экране. pivot — точка сустава внутри части (px). place — куда pivot ставится в сборке. Углы: + = по часовой.","z_order":["19_backpack","legs","17_body","18_vest","arms","01_head","eyes","pupils","brows","mouth","09_headphones","02_hair"],"parts":[{"id":"01_head","name":"Голова целиком","file":"01_head.svg","size":[180,160],"pivot":[90,80],"place":[200,170]},{"id":"02_hair","name":"Волосы (3 волоска)","file":"02_hair.svg","size":[70,56],"pivot":[35,50],"place":[200,96]},{"id":"03_eye_left","name":"Левый глаз (белок)","file":"03_eye_left.svg","size":[60,68],"pivot":[30,34],"place":[162,168]},{"id":"04_eye_right","name":"Правый глаз (белок)","file":"04_eye_right.svg","size":[60,68],"pivot":[30,34],"place":[238,168]},{"id":"05_pupil_left","name":"Левый зрачок","file":"05_pupil_left.svg","size":[30,30],"pivot":[15,15],"place":[165,172]},{"id":"06_pupil_right","name":"Правый зрачок","file":"06_pupil_right.svg","size":[30,30],"pivot":[15,15],"place":[235,172]},{"id":"07_lid_left","name":"Левое веко","file":"07_lid_left.svg","size":[60,68],"pivot":[30,34],"place":[162,168]},{"id":"08_lid_right","name":"Правое веко","file":"08_lid_right.svg","size":[60,68],"pivot":[30,34],"place":[238,168]},{"id":"09_headphones","name":"Наушники (вместо очков)","file":"09_headphones.svg","size":[224,120],"pivot":[112,70],"place":[200,160]},{"id":"10_brow_left","name":"Левая бровь","file":"10_brow_left.svg","size":[56,22],"pivot":[28,11],"place":[162,128]},{"id":"11_brow_right","name":"Правая бровь","file":"11_brow_right.svg","size":[56,22],"pivot":[28,11],"place":[238,128]},{"id":"12_mouth_neutral","name":"Рот: нейтральный","file":"12_mouth_neutral.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"13_mouth_smile","name":"Рот: улыбка","file":"13_mouth_smile.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"14_mouth_open","name":"Рот: открытый","file":"14_mouth_open.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"15_mouth_sad","name":"Рот: грусть","file":"15_mouth_sad.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"16_mouth_surprise","name":"Рот: удивление","file":"16_mouth_surprise.svg","size":[64,44],"pivot":[32,22],"place":[200,208]},{"id":"17_body","name":"Тело","file":"17_body.svg","size":[150,190],"pivot":[75,95],"place":[200,330]},{"id":"18_vest","name":"Жилет с шарфом","file":"18_vest.svg","size":[150,190],"pivot":[75,95],"place":[200,330]},{"id":"19_backpack","name":"Коричневый рюкзак","file":"19_backpack.svg","size":[190,150],"pivot":[95,75],"place":[200,345]},{"id":"20_shoulder_left","name":"Левое плечо","file":"20_shoulder_left.svg","size":[34,62],"pivot":[17,14],"place":[142,296]},{"id":"21_forearm_left","name":"Левое предплечье","file":"21_forearm_left.svg","size":[32,62],"pivot":[16,14],"place":[142,332]},{"id":"22_hand_left","name":"Левая кисть","file":"22_hand_left.svg","size":[44,48],"pivot":[22,12],"place":[142,366]},{"id":"23_shoulder_right","name":"Правое плечо","file":"23_shoulder_right.svg","size":[34,62],"pivot":[17,14],"place":[258,296]},{"id":"24_forearm_right","name":"Правое предплечье","file":"24_forearm_right.svg","size":[32,62],"pivot":[16,14],"place":[258,332]},{"id":"25_hand_right","name":"Правая кисть","file":"25_hand_right.svg","size":[44,48],"pivot":[22,12],"place":[258,366]},{"id":"26_thigh_left","name":"Левое бедро","file":"26_thigh_left.svg","size":[36,56],"pivot":[18,14],"place":[176,408]},{"id":"27_shin_left","name":"Левая голень","file":"27_shin_left.svg","size":[34,56],"pivot":[17,14],"place":[176,444]},{"id":"28_foot_left","name":"Левая ступня","file":"28_foot_left.svg","size":[60,36],"pivot":[30,8],"place":[176,480]},{"id":"29_thigh_right","name":"Правое бедро","file":"29_thigh_right.svg","size":[36,56],"pivot":[18,14],"place":[224,408]},{"id":"30_shin_right","name":"Правая голень","file":"30_shin_right.svg","size":[34,56],"pivot":[17,14],"place":[224,444]},{"id":"31_foot_right","name":"Правая ступня","file":"31_foot_right.svg","size":[60,36],"pivot":[30,8],"place":[224,480]}],"rig":{"arm_left":{"parts":["20_shoulder_left","21_forearm_left","22_hand_left"],"default_angles":[12,6,0],"segment_lengths":[36,34],"root_joint":[142,296]},"arm_right":{"parts":["23_shoulder_right","24_forearm_right","25_hand_right"],"default_angles":[-12,-6,0],"segment_lengths":[36,34],"root_joint":[258,296]},"leg_left":{"parts":["26_thigh_left","27_shin_left","28_foot_left"],"default_angles":[4,-4,0],"segment_lengths":[36,34],"root_joint":[176,408]},"leg_right":{"parts":["29_thigh_right","30_shin_right","31_foot_right"],"default_angles":[-4,4,0],"segment_lengths":[36,34],"root_joint":[224,408]}},"mouths":["12_mouth_neutral","13_mouth_smile","14_mouth_open","15_mouth_sad","16_mouth_surprise"],"palette":{"outline":"#1C2B2B","body":"#3FC1B0","belly":"#8FE3D6","vest":"#4B4FA3","scarf":"#F26B4B","headphones":"#F28C28","backpack":"#8B5A2B","gloves_boots":"#1F2A44","pupil":"#3B2314"}};
+
 const base64Images = {
   "01_head.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTYwIiB2aWV3Qm94PSIwIDAgMTgwIDE2MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNOTAgNiBDMTUwIDYgMTc0IDQwIDE3NCA4NCBDMTc0IDEyOCAxNDAgMTU0IDkwIDE1NCBDNDAgMTU0IDYgMTI4IDYgODQgQzYgNDAgMzAgNiA5MCA2IFoiIGZpbGw9IiMzRkMxQjAiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+",
   "02_hair.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3MCIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDcwIDU2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik0yMCA1MiBRMTAgMzIgMjIgMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTM1IDUyIFEzNCAyOCAzOCA1IiBmaWxsPSJub25lIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik01MCA1MiBRNjAgMzQgNTQgMTQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI2Ii8+PC9zdmc+",
@@ -44,16 +44,17 @@ const base64Images = {
   "07_lid_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDYwIDY4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik01IDM0IEEyNSAzMCAwIDAgMSA1NSAzNCBaIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNCIvPjwvc3ZnPg==",
   "08_lid_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2OCIgdmlld0JveD0iMCAwIDYwIDY4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik01IDM0IEEyNSAzMCAwIDAgMSA1NSAzNCBaIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNCIvPjwvc3ZnPg==",
   "09_headphones.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMjQiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMjI0IDEyMCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMTYgNTAgQzE2IC02IDIwOCAtNiAyMDggNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSIxNiIvPjxwYXRoIGQ9Ik0xNiA1MCBDMTYgLTYgMjA4IC02IDIwOCA1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjI4QzI4IiBzdHJva2Utd2lkdGg9IjgiLz48ZWxsaXBzZSBjeD0iMTYiIGN5PSI3MCIgcng9IjE1IiByeT0iMjYiIGZpbGw9IiNEOTZGMEYiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PGVsbGlwc2UgY3g9IjIwOCIgY3k9IjcwIiByeD0iMTUiIHJ5PSIyNiIgZmlsbD0iI0Q5NkYwRiIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjUiLz48L3N2Zz4=",
-  "10_brow_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDU2IDIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik02IDE0IFEyOCAyIDUwIDEyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==","11_brow_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDU2IDIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik02IDEyIFEyOCAyIDUwIDE0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==",
+  "10_brow_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDU2IDIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik02IDE0IFEyOCAyIDUwIDEyIiBmaWxsPSJub25lIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==",
+  "11_brow_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIyMiIgdmlld0JveD0iMCAwIDU2IDIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik02IDEyIFEyOCAyIDUwIDE0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjwvc3ZnPg==",
   "12_mouth_neutral.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik0xOCAyNCBRMzIgMjggNDYgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+",
   "13_mouth_smile.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik0xMiAxNiBRMzIgMzYgNTIgMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHBhdGggZD0iTTggMTIgTDEyIDE2IE01NiAxMiBMNTIgMTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48L3N2Zz4=",
   "14_mouth_open.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjIyIiByeD0iMTYiIHJ5PSIxNSIgZmlsbD0iIzVBMUUxRSIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjQiLz48ZWxsaXBzZSBjeD0iMzIiIGN5PSIzMCIgcng9IjkiIHJ5PSI1LjUiIGZpbGw9IiNFODZBN0EiLz48L3N2Zz4=",
-  "15_mouth_sad.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik0xNCAzMSBRMzIgMTIgNTAgMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+",
-  "16_mouth_surprise.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjIyIiByeD0iOSIgcnk9IjEyIiBmaWxsPSIjNUExRTFFIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNCIvPjwvc3ZnPg==",
+  "15_mouth_sad.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxwYXRoIGQ9Ik0xNCAzMSBRMzIgMTIgNTAgMzEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+","16_mouth_surprise.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI0NCIgdmlld0JveD0iMCAwIDY0IDQ0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxlbGxpcHNlIGN4PSIzMiIgY3k9IjIyIiByeD0iOSIgcnk9IjEyIiBmaWxsPSIjNUExRTFFIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNCIvPjwvc3ZnPg==",
   "17_body.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTUwIDE5MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNNzUgOCBDMTIwIDggMTQyIDUwIDE0MiAxMDUgQzE0MiAxNjAgMTE1IDE4MiA3NSAxODIgQzM1IDE4MiA4IDE2MCA4IDEwNSBDOCA1MCAzMCA4IDc1IDggWiIgZmlsbD0iIzNGQzFCMCIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjYiLz48ZWxsaXBzZSBjeD0iNzUiIGN5PSIxMTUiIHJ4PSIzOCIgcnk9IjUwIiBmaWxsPSIjOEZFM0Q2Ii8+PC9zdmc+",
   "18_vest.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAiIGhlaWdodD0iMTkwIiB2aWV3Qm94PSIwIDAgMTUwIDE5MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cGF0aCBkPSJNMTIgODAgTDUyIDY4IEw3NSAxMjAgTDk4IDY4IEwxMzggODAgQzE0MSA5NiAxNDIgMTAyIDE0MiAxMDggQzE0MiAxNjAgMTE1IDE4MiA3NSAxODIgQzM1IDE4MiA4IDE2MCA4IDEwOCBDOCAxMDIgOSA5NiAxMiA4MCBaIiBmaWxsPSIjNEI0RkEzIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjxyZWN0IHg9IjIyIiB5PSIxMzIiIHdpZHRoPSIzNCIgaGVpZ2h0PSIyNiIgcng9IjYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHJlY3QgeD0iOTQiIHk9IjEzMiIgd2lkdGg9IjM0IiBoZWlnaHQ9IjI2IiByeD0iNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjQiLz48cGF0aCBkPSJNMTQgNTYgUTc1IDg2IDEzNiA1NiBMMTM5IDgwIFE3NSAxMTAgMTEgODAgWiIgZmlsbD0iI0YyNkI0QiIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNOTggOTQgTDExNiAxMzIgTDk2IDEzNiBMODYgMTAwIFoiIGZpbGw9IiNGMjZCNEIiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PC9zdmc+",
   "19_backpack.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTAiIGhlaWdodD0iMTUwIiB2aWV3Qm94PSIwIDAgMTkwIDE1MCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iMTc0IiBoZWlnaHQ9IjEzNCIgcng9IjI2IiBmaWxsPSIjOEI1QTJCIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNiIvPjxwYXRoIGQ9Ik04IDYyIFE5NSA5NCAxODIgNjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSI1Ii8+PHJlY3QgeD0iNjAiIHk9Ijk0IiB3aWR0aD0iNzAiIGhlaWdodD0iNDAiIHJ4PSIxMCIgZmlsbD0iIzZFNDYyMCIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjQiLz48cmVjdCB4PSI4OCIgeT0iNjgiIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNiIgcng9IjMiIGZpbGw9IiNEOUIyNEMiIHN0cm9rZT0iIzFDMkIyQiIgc3Ryb2tlLXdpZHRoPSIzIi8+PC9zdmc+",
-  "20_shoulder_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDM0IDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI1MCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==","21_forearm_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDMyIDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjQiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0OCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
+  "20_shoulder_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDM0IDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI1MCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
+  "21_forearm_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDMyIDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjQiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0OCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
   "22_hand_left.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0NCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ0IDQ4IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxlbGxpcHNlIGN4PSIyMiIgY3k9IjI4IiByeD0iMTYiIHJ5PSIxOCIgZmlsbD0iIzFGMkE0NCIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjUiLz48ZWxsaXBzZSBjeD0iMzUiIGN5PSIzMCIgcng9IjciIHJ5PSIxMCIgZmlsbD0iIzFGMkE0NCIgc3Ryb2tlPSIjMUMyQjJCIiBzdHJva2Utd2lkdGg9IjQiLz48L3N2Zz4=",
   "23_shoulder_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDM0IDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI1MCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
   "24_forearm_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSI2MiIgdmlld0JveD0iMCAwIDMyIDYyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjQiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0OCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
@@ -64,163 +65,182 @@ const base64Images = {
   "29_thigh_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDM2IDU2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjYiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0NCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
   "30_shin_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNCIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDM0IDU2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjUiIHk9IjYiIHdpZHRoPSIyNCIgaGVpZ2h0PSI0NCIgcng9IjEyIiBmaWxsPSIjM0ZDMUIwIiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjwvc3ZnPg==",
   "31_foot_right.svg": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSIzNiIgdmlld0JveD0iMCAwIDYwIDM2IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbGluZWNhcD0icm91bmQiPjxyZWN0IHg9IjQiIHk9IjgiIHdpZHRoPSI1MiIgaGVpZ2h0PSIyNCIgcng9IjEyIiBmaWxsPSIjMUYyQTQ0IiBzdHJva2U9IiMxQzJCMkIiIHN0cm9rZS13aWR0aD0iNSIvPjxwYXRoIGQ9Ik0xMCAyNiBMNTAgMjYiIHN0cm9rZT0iIzNCNEE2QiIgc3Ryb2tlLXdpZHRoPSI0Ii8+PC9zdmc+"
-};  
-const svgNS = "http://www.w3.org/2000/svg";
+};const svgNS = "http://www.w3.org/2000/svg";
 const svg = document.getElementById("character");
 const pet = document.getElementById("pet");
 const bubble = document.getElementById("bubble");
-const partMap = Object.fromEntries(manifest.parts.map(p => [p.id,p]));
-const hiddenLids = ["07_lid_left","08_lid_right"];
+const partMap = Object.fromEntries(manifest.parts.map(p => [p.id, p]));
+const hiddenLids = ["07_lid_left", "08_lid_right"];
 let sleeping = false, posX = 12, direction = 1, speed = 0.75;
 let bubbleTimer = null;
 
 function addPart(parent, id, extraClass) {
   const p = partMap[id];
   if (!p) return null;
-  const g = document.createElementNS(svgNS,"g");
-  g.setAttribute("data-part",id);
-  if (extraClass) g.setAttribute("class",extraClass);
-  const image = document.createElementNS(svgNS,"image");
-  image.setAttribute("href",p.file);
-  image.setAttributeNS("http://www.w3.org/1999/xlink","href",p.file);
-  image.setAttribute("x",-p.pivot[0]);
-  image.setAttribute("y",-p.pivot[1]);
-  image.setAttribute("width",p.size[0]);
-  image.setAttribute("height",p.size[1]);
-  image.setAttribute("preserveAspectRatio","none");
+  const g = document.createElementNS(svgNS, "g");
+  g.setAttribute("data-part", id);
+  if (extraClass) g.setAttribute("class", extraClass);
+  const image = document.createElementNS(svgNS, "image");
+  const base64Src = base64Images[p.file];
+  if (base64Src) {
+    image.setAttribute("href", base64Src);
+    image.setAttributeNS("http://www.w3.org/1999/xlink", "href", base64Src);
+  } else {
+    image.setAttribute("href", p.file);
+    image.setAttributeNS("http://www.w3.org/1999/xlink", "href", p.file);
+  }
+  image.setAttribute("x", -p.pivot[0]);
+  image.setAttribute("y", -p.pivot[1]);
+  image.setAttribute("width", p.size[0]);
+  image.setAttribute("height", p.size[1]);
+  image.setAttribute("preserveAspectRatio", "none");
   g.appendChild(image);
-  g.setAttribute("transform",`translate(${p.place[0]} ${p.place[1]})`);
+  g.setAttribute("transform", `translate(${p.place[0]} ${p.place[1]})`);
   parent.appendChild(g);
   return g;
 }
-function groupAt(id,x,y,cls) {
-  const g=document.createElementNS(svgNS,"g");
-  g.setAttribute("id",id);
-  if(cls) g.setAttribute("class",cls);
-  g.setAttribute("transform",`translate(${x} ${y})`);
+
+function groupAt(id, x, y, cls) {
+  const g = document.createElementNS(svgNS, "g");
+  g.setAttribute("id", id);
+  if (cls) g.setAttribute("class", cls);
+  g.setAttribute("transform", `translate(${x} ${y})`);
   svg.appendChild(g);
   return g;
 }
-function addAt(parent,id,x,y) {
-  const p=partMap[id]; if(!p) return;
-  const g=document.createElementNS(svgNS,"g");
-  g.setAttribute("data-part",id);
-  g.setAttribute("transform",`translate(${x} ${y})`);
-  const im=document.createElementNS(svgNS,"image");
-  im.setAttribute("href",p.file);
-  im.setAttributeNS("http://www.w3.org/1999/xlink","href",p.file);
-  im.setAttribute("x",-p.pivot[0]); im.setAttribute("y",-p.pivot[1]);
-  im.setAttribute("width",p.size[0]); im.setAttribute("height",p.size[1]);
-  im.setAttribute("preserveAspectRatio","none");
+
+function addAt(parent, id, x, y) {
+  const p = partMap[id]; if (!p) return;
+  const g = document.createElementNS(svgNS, "g");
+  g.setAttribute("data-part", id);
+  g.setAttribute("transform", `translate(${x} ${y})`);
+  const im = document.createElementNS(svgNS, "image");
+  const base64Src = base64Images[p.file];
+  if (base64Src) {
+    im.setAttribute("href", base64Src);
+    im.setAttributeNS("http://www.w3.org/1999/xlink", "href", base64Src);
+  } else {
+    im.setAttribute("href", p.file);
+    im.setAttributeNS("http://www.w3.org/1999/xlink", "href", p.file);
+  }
+  im.setAttribute("x", -p.pivot[0]); im.setAttribute("y", -p.pivot[1]);
+  im.setAttribute("width", p.size[0]); im.setAttribute("height", p.size[1]);
+  im.setAttribute("preserveAspectRatio", "none");
   g.appendChild(im); parent.appendChild(g);
   return g;
 }
-function buildPet(){
-  svg.innerHTML="";
-  // Back item first.
-  addPart(svg,"19_backpack");
-  // Legs: individual segments are grouped around their hip pivot.
-  const ll=groupAt("leg-left",176,408,"");
-  addAt(ll,"26_thigh_left",0,0);
-  addAt(ll,"27_shin_left",0,36);
-  addAt(ll,"28_foot_left",0,72);
-  const lr=groupAt("leg-right",224,408,"");
-  addAt(lr,"29_thigh_right",0,0);
-  addAt(lr,"30_shin_right",0,36);
-  addAt(lr,"31_foot_right",0,72);
 
-  addPart(svg,"17_body");
-  addPart(svg,"18_vest");
+function buildPet() {
+  svg.innerHTML = "";
+  addPart(svg, "19_backpack");
 
-  const al=groupAt("arm-left",142,296,"");
-  addAt(al,"20_shoulder_left",0,0);
-  addAt(al,"21_forearm_left",0,36);
-  addAt(al,"22_hand_left",0,70);
-  const ar=groupAt("arm-right",258,296,"");
-  addAt(ar,"23_shoulder_right",0,0);
-  addAt(ar,"24_forearm_right",0,36);
-  addAt(ar,"25_hand_right",0,70);
+  const ll = groupAt("leg-left", 176, 408, "");
+  addAt(ll, "26_thigh_left", 0, 0);
+  addAt(ll, "27_shin_left", 0, 36);
+  addAt(ll, "28_foot_left", 0, 72);
+  const lr = groupAt("leg-right", 224, 408, "");
+  addAt(lr, "29_thigh_right", 0, 0);
+  addAt(lr, "30_shin_right", 0, 36);
+  addAt(lr, "31_foot_right", 0, 72);
 
-  addPart(svg,"01_head");
-  addPart(svg,"09_headphones");
-  addPart(svg,"02_hair");
-  addPart(svg,"10_brow_left");
-  addPart(svg,"11_brow_right");
+  addPart(svg, "17_body");
+  addPart(svg, "18_vest");
 
-  // Eyes and pupils deliberately remain separate layers.
-  addPart(svg,"03_eye_left","eye-white");
-  addPart(svg,"04_eye_right","eye-white");
-  addPart(svg,"05_pupil_left","pupil");
-  addPart(svg,"06_pupil_right","pupil");
+  const al = groupAt("arm-left", 142, 296, "");
+  addAt(al, "20_shoulder_left", 0, 0);
+  addAt(al, "21_forearm_left", 0, 36);
+  addAt(al, "22_hand_left", 0, 70);
+  const ar = groupAt("arm-right", 258, 296, "");
+  addAt(ar, "23_shoulder_right", 0, 0);
+  addAt(ar, "24_forearm_right", 0, 36);
+  addAt(ar, "25_hand_right", 0, 70);
 
-  // Both lids are present but hidden until sleep.
+  addPart(svg, "01_head");
+  addPart(svg, "09_headphones");
+  addPart(svg, "02_hair");
+  addPart(svg, "10_brow_left");
+  addPart(svg, "11_brow_right");
+
+  addPart(svg, "03_eye_left", "eye-white");
+  addPart(svg, "04_eye_right", "eye-white");
+  addPart(svg, "05_pupil_left", "pupil");
+  addPart(svg, "06_pupil_right", "pupil");
+
   hiddenLids.forEach(id => {
-    const lid=addPart(svg,id,"eyelid");
-    if(lid) lid.style.display="none";
+    const lid = addPart(svg, id, "eyelid");
+    if (lid) lid.style.display = "none";
   });
   setMouth("13_mouth_smile");
 }
-function setMouth(id){
-  svg.querySelectorAll('[data-mouth="true"]').forEach(n=>n.remove());
-  const p=partMap[id]; if(!p)return;
-  const g=addPart(svg,id,"mouth");
-  if(g) g.setAttribute("data-mouth","true");
+
+function setMouth(id) {
+  svg.querySelectorAll('[data-mouth="true"]').forEach(n => n.remove());
+  const p = partMap[id]; if (!p) return;
+  const g = addPart(svg, id, "mouth");
+  if (g) g.setAttribute("data-mouth", "true");
 }
-function setEyesClosed(closed){
-  hiddenLids.forEach(id=>{
-    const el=svg.querySelector(`[data-part="${id}"]`);
-    if(el) el.style.display=closed?"":"none";
+
+function setEyesClosed(closed) {
+  hiddenLids.forEach(id => {
+    const el = svg.querySelector(`[data-part="${id}"]`);
+    if (el) el.style.display = closed ? "" : "none";
   });
 }
-function showPetMessage(text,duration=3500){
-  bubble.textContent=String(text);
-  bubble.style.display="block";
-  if(bubbleTimer) clearTimeout(bubbleTimer);
-  if(duration>0) bubbleTimer=setTimeout(()=>bubble.style.display="none",duration);
-}
-function hidePetMessage(){bubble.style.display="none";if(bubbleTimer)clearTimeout(bubbleTimer);}
-window.showPetMessage=showPetMessage;
 
-function wake(){
-  sleeping=false;
+function showPetMessage(text, duration = 3500) {
+  bubble.textContent = String(text);
+  bubble.style.display = "block";
+  if (bubbleTimer) clearTimeout(bubbleTimer);
+  if (duration > 0) bubbleTimer = setTimeout(() => bubble.style.display = "none", duration);
+}
+
+function hidePetMessage() { bubble.style.display = "none"; if (bubbleTimer) clearTimeout(bubbleTimer); }
+window.showPetMessage = showPetMessage;
+
+function wake() {
+  sleeping = false;
   pet.classList.remove("sleeping");
   setEyesClosed(false);
   pet.classList.add("walking");
 }
-window.petAction=function(action){
-  if(action==="feed"){
+
+window.petAction = function(action) {
+  if (action === "feed") {
     wake(); setMouth("14_mouth_open"); showPetMessage("Ням-ням! Спасибо за яблочко 🍎");
-    setTimeout(()=>setMouth("13_mouth_smile"),1500);
-  } else if(action==="play"){
+    setTimeout(() => setMouth("13_mouth_smile"), 1500);
+  } else if (action === "play") {
     wake(); pet.classList.remove("jumping"); void pet.offsetWidth;
     pet.classList.add("jumping"); showPetMessage("Ура! Давай играть! ⚽");
-    setTimeout(()=>pet.classList.remove("jumping"),750);
-  } else if(action==="sleep"){
-    sleeping=true; pet.classList.remove("walking","jumping");
+    setTimeout(() => pet.classList.remove("jumping"), 750);
+  } else if (action === "sleep") {
+    sleeping = true; pet.classList.remove("walking", "jumping");
     pet.classList.add("sleeping"); setEyesClosed(true);
-    showPetMessage("Спокойной ночи... 💤",0);
-  } else if(action==="wake"){
+    showPetMessage("Спокойной ночи... 💤", 0);
+  } else if (action === "wake") {
     wake(); hidePetMessage();
   }
 };
-window.onServerReply=function(reply){
-  wake(); showPetMessage(reply,6000);
+
+window.onServerReply = function(reply) {
+  wake(); showPetMessage(reply, 6000);
   setMouth("13_mouth_smile");
 };
-function walkFrame(){
-  if(!sleeping){
-    const width=pet.getBoundingClientRect().width || 190;
-    const max=Math.max(0,window.innerWidth-width-4);
-    posX+=speed*direction;
-    if(posX>=max){posX=max;direction=-1;}
-    if(posX<=0){posX=0;direction=1;}
-    pet.style.left=posX+"px";
-    pet.style.transform=direction<0?"scaleX(-1)":"scaleX(1)";
+
+function walkFrame() {
+  if (!sleeping) {
+    const width = pet.getBoundingClientRect().width || 190;
+    const max = Math.max(0, window.innerWidth - width - 4);
+    posX += speed * direction;
+    if (posX >= max) { posX = max; direction = -1; }
+    if (posX <= 0) { posX = 0; direction = 1; }
+    pet.style.left = posX + "px";
+    pet.style.transform = direction < 0 ? "scaleX(-1)" : "scaleX(1)";
     pet.classList.add("walking");
   }
   requestAnimationFrame(walkFrame);
 }
-window.addEventListener("resize",()=>{posX=Math.min(posX,Math.max(0,innerWidth-pet.offsetWidth));});
+
+window.addEventListener("resize", () => { posX = Math.min(posX, Math.max(0, innerWidth - pet.offsetWidth)); });
 buildPet();
 pet.classList.add("walking");
 requestAnimationFrame(walkFrame);
