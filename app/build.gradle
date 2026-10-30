@@ -6,6 +6,13 @@ android {
     namespace 'com.izi.pet'
     compileSdk 35
 
+    // ЭТОТ БЛОК ДОБАВЛЕН, ЧТОБЫ КАРТИНКИ ПОПАЛИ В APK
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets']
+        }
+    }
+
     defaultConfig {
         applicationId 'com.izi.pet'
         minSdk 29
