@@ -1,0 +1,23 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.izi.pet'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.izi.pet'
+        minSdk 29
+        // targetSdk 32 keeps the Android 10+ overlay/foreground-service
+        // behavior compatible with this sideloaded prototype.
+        targetSdk 32
+        versionCode 1
+        versionName '1.0'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
