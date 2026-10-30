@@ -6,18 +6,21 @@ android {
     namespace 'com.izi.pet'
     compileSdk 35
 
-    // ЭТОТ БЛОК ДОБАВЛЕН, ЧТОБЫ КАРТИНКИ ПОПАЛИ В APK
+    // Принудительно указываем, где искать картинки
     sourceSets {
         main {
             assets.srcDirs = ['src/main/assets']
         }
     }
 
+    // Запрещаем сжимать SVG, чтобы они точно попали в APK
+    aaptOptions {
+        noCompress "svg"
+    }
+
     defaultConfig {
         applicationId 'com.izi.pet'
         minSdk 29
-        // targetSdk 32 keeps the Android 10+ overlay/foreground-service
-        // behavior compatible with this sideloaded prototype.
         targetSdk 32
         versionCode 1
         versionName '1.0'
